@@ -119,12 +119,12 @@ flowchart TD
     click FlatGeoBuf "https://flatgeobuf.org/" _blank
     click PMTiles "https://github.com/protomaps/PMTiles/blob/main/spec/v3/spec.md" _blank
     click Zarr "https://github.com/zarr-developers/geozarr-spec/" _blank
-    click Foundation "/docs/processes/foundation/" _blank
-    click StatProducts "/docs/processes/statistical_products/" _blank
-    click Orthoimagery "/docs/processes/orthoimagery/" _blank
-    click FieldImagery "/docs/processes/field_imagery/" _blank
-    %%click EnvironmentClimate "/docs/processes/environmental_climate/" _blank
-    %%click Elevation "/docs/processes/elevation/" _blank
+    click Foundation "https://www.dataforcanada.org/docs/processes/foundation/" _blank
+    click StatProducts "https://www.dataforcanada.org/docs/processes/statistical_products/" _blank
+    click Orthoimagery "https://www.dataforcanada.org/docs/processes/orthoimagery/" _blank
+    click FieldImagery "https://www.dataforcanada.org/docs/processes/field_imagery/" _blank
+    %%click EnvironmentClimate "https://www.dataforcanada.org/docs/processes/environmental_climate/" _blank
+    %%click Elevation "https://www.dataforcanada.org/docs/processes/elevation/" _blank
     click JPEGXL "https://jpeg.org/jpegxl/" _blank
     click AV1 "https://aomedia.org/specifications/av1/" _blank
     click DecentralizedDistribution "/docs/dissemination/" _blank
