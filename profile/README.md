@@ -22,7 +22,7 @@ We act as the transformation layer. We aggregate datasets with permissive licens
 
 ## High-Level Overview
 
-![High-Level Overview](https://www.dataforcanada.org/high_level_overview.svg)
+![High-Level Overview](https://raw.githubusercontent.com/dataforcanada/www.dataforcanada.org/refs/heads/main/static/high_level_overview_homepage.svg)
 
 ## Get Involved: We Are Looking for Members
 We are actively looking for new members to help shape this project. 
