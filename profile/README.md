@@ -134,7 +134,7 @@ flowchart TD
     click PMTiles "https://github.com/protomaps/PMTiles/blob/main/spec/v3/spec.md" _blank
     click JPEGXL "https://jpeg.org/jpegxl/" _blank
     click AV1 "https://aomedia.org/specifications/av1/" _blank
-    click DecentralizedDistribution "/docs/dissemination/" _blank
+    click DecentralizedDistribution "https://www.dataforcanada.org/docs/dissemination/" _blank
     click Metadata "https://stac-utils.github.io/stac-geoparquet/latest/spec/stac-geoparquet-spec/" _blank
     click Martin "https://martin.maplibre.org/" _blank
     click GeoServer "https://geoserver.org/" _blank
