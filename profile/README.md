@@ -22,7 +22,7 @@ We act as the transformation layer. We aggregate datasets with permissive licens
 * **For Systems:** Standardized data structures designed to feed directly into pipelines, data warehouses, and downstream services.
 
 **Our Stewardship:**
-Data for Canada takes ownership of the datasets we create, from start to finish. We ensure that data structures remain consistent, allowing for reliable analysis across **time and space**.
+Data for Canada takes ownership of the datasets we create, from start to finish. We ensure that data remains consistent, allowing for reliable analysis across **time and space**.
 
 ## What Guides Us
 
@@ -149,7 +149,7 @@ flowchart TD
     click Orthoimagery "https://github.com/dataforcanada/process-orthoimagery-labs/" _blank
     click FieldImagery "https://github.com/dataforcanada/process-field-imagery-labs/" _blank
     click EnvironmentClimate "https://github.com/dataforcanada/process-environmental-climate-labs/" _blank
-    click Elevation "https://www.dataforcanada.org/docs/dissemination/" _blank
+    click Elevation "https://github.com/dataforcanada/process-elevation-labs/" _blank
     click WebCorpus "https://github.com/dataforcanada/process-web-corpus-labs/" _blank
 
     click Parquet "https://github.com/apache/parquet-format/" _blank
