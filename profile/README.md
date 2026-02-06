@@ -42,9 +42,12 @@ flowchart TD
     subgraph df [Dissemination Formats]
         Parquet@{ shape: lean-l}
         FlatGeoBuf@{ shape: lean-l}
+        MVT@{ shape: lean-l}
+        MLT@{ shape: lean-l}
         PMTiles@{ shape: lean-l}
         COG@{ shape: lean-l}
         Zarr@{ shape: lean-l}
+        WebP@{ shape: lean-l}
         JPEGXL@{ shape: lean-l, label: "JPEG XL"}
         AV1@{ shape: lean-l, label: "AV1"}
     end
@@ -52,12 +55,12 @@ flowchart TD
     subgraph di [Distribution Infrastructure]
         ObjectStorage@{ shape: bow-rect, label: "Object Storage"}
         Metadata@{ shape: rect}
-        HTTP@{ shape: rect, label: "Static Files & API"}
+        HTTP@{ shape: rect, label: "Static Files"}
         DecentralizedDistribution@{ shape: rect, label: "Decentralized Distribution"}
     end
 
     subgraph ei [Experimental Infrastructure]
-        GeoProcessingAPIs@{ shape: rect, label: "Geoprocessing Services"}
+        GeoSpatialServices@{ shape: rect, label: "Geospatial Services"}
         %%Martin@{ shape: rect}
         %%GeoServer@{ shape: rect}
         %%ZOOProject@{ shape: rect, label: "ZOO-Project"}
@@ -92,14 +95,22 @@ flowchart TD
     a9@{animate: true, animation: slow}
     Parquet a10@--> FlatGeoBuf
     a10@{animate: true, animation: slow}
-    Parquet a11@--> PMTiles
+    FlatGeoBuf a11@--> MVT
     a11@{animate: true, animation: slow}
-    Zarr a12@ --> PMTiles
+    FlatGeoBuf a91@--> MLT
+    a91@{animate: true, animation: slow}
+    MVT a90@ --> PMTiles
+    a90@{animate: true, animation: slow}
+    MLT a92@ --> PMTiles
+    a92@{animate: true, animation: slow}
+    Zarr a12@ --> WebP
     a12@{animate: true, animation: slow}
     df a13@ --> di
     a13@{animate: true, animation: slow}
-    COG a14@--> PMTiles
+    COG a14@--> WebP
     a14@{animate: true, animation: slow}
+    WebP a93@--> PMTiles 
+    a93@{animate: true, animation: slow}
     ObjectStorage a15@--> Metadata
     a15@{animate: true, animation: slow}
     Metadata a16@--> HTTP
@@ -129,12 +140,15 @@ flowchart TD
 
     click Parquet "https://github.com/apache/parquet-format/" _blank
     click FlatGeoBuf "https://flatgeobuf.org/" _blank
+    click MVT "https://github.com/mapbox/vector-tile-spec/" _blank
+    click MLT "https://github.com/maplibre/maplibre-tile-spec/" _blank
     click COG "https://cogeo.org/" _blank
     click Zarr "https://github.com/zarr-developers/geozarr-spec/" _blank
+    click WebP "https://developers.google.com/speed/webp/docs/riff_container/" _blank
     click PMTiles "https://github.com/protomaps/PMTiles/blob/main/spec/v3/spec.md" _blank
     click JPEGXL "https://jpeg.org/jpegxl/" _blank
     click AV1 "https://aomedia.org/specifications/av1/" _blank
-    click DecentralizedDistribution "https://www.dataforcanada.org/docs/dissemination/" _blank
+    click DecentralizedDistribution "/docs/dissemination/" _blank
     click Metadata "https://stac-utils.github.io/stac-geoparquet/latest/spec/stac-geoparquet-spec/" _blank
     click Martin "https://martin.maplibre.org/" _blank
     click GeoServer "https://geoserver.org/" _blank
