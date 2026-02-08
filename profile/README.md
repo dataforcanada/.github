@@ -43,9 +43,10 @@ We prioritize our work in a utilitarian manner, aiming to provide the greatest a
 Our approach is guided by the following:
 
 * [Link rot in LIS literature: a 20-year study of web citation decay, recovery and preservation challenges](https://doi.org/10.1108/AJIM-05-2025-0286)
-* [Sustainability of Digital Formats: Planning for Library of Congress Collections](https://www.loc.gov/preservation/digital/formats/index.html)
 * [Guidance on assessing readiness to manage data according to Findable, Accessible, Interoperable, Reusable (FAIR) principles](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/information-management/guidance-assessing-readiness-manage-data-according-findable-accessible-interoperable-reusable-principles.html)
 * [GC White Paper: Data Sovereignty and Public Cloud](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/digital-sovereignty/gc-white-paper-data-sovereignty-public-cloud.html)
+* [Sustainability of Digital Formats: Planning for Library of Congress Collections](https://www.loc.gov/preservation/digital/formats/index.html)
+* [Cloud-Optimized Geospatial Formats Guide](https://guide.cloudnativegeo.org/)
 
 ## Explore Sample Datasets
 
@@ -66,7 +67,7 @@ flowchart TD
         Foundation@{ shape: lean-l}
         Orthoimagery@{ shape: lean-l}
         FieldImagery@{ shape: lean-l, label: "Field Imagery"}
-        EnvironmentClimate@{ shape: lean-l, label: "Environmental & Climate"}
+        EnvironmentClimate@{ shape: lean-l, label: "Environment, Climate, & Health"}
         Elevation@{ shape: lean-l}
         WebCorpus@{ shape: lean-l, label: "Web Corpus"}
     end
@@ -87,6 +88,8 @@ flowchart TD
         COG@{ shape: lean-l}
         Zarr@{ shape: lean-l}
         WebP@{ shape: lean-l}
+        JPG@{ shape: lean-l}
+        PNG@{ shape: lean-l}
         JPEGXL@{ shape: lean-l, label: "JPEG XL"}
         AV1@{ shape: lean-l, label: "AV1"}
         WARC@{ shape: lean-l}
@@ -159,8 +162,14 @@ flowchart TD
     a93@{animate: true, animation: slow}
     WebP a94@--> GeoPackage
     a94@{animate: true, animation: slow}
-	WebP a101@--> FileGeodatabase
+    WebP a103@--> JPG
+    a103@{animate: true, animation: slow}
+    WebP a104@--> PNG
+    a104@{animate: true, animation: slow}
+	JPG a101@--> FileGeodatabase
     a101@{animate: true, animation: slow}
+	PNG a102@--> FileGeodatabase
+    a102@{animate: true, animation: slow}
     ObjectStorage a15@--> Metadata
     a15@{animate: true, animation: slow}
     Metadata a16@--> HTTP
@@ -185,7 +194,7 @@ flowchart TD
     click Statistical "https://github.com/dataforcanada/process-statistical-labs/" _blank
     click Orthoimagery "https://github.com/dataforcanada/process-orthoimagery-labs/" _blank
     click FieldImagery "https://github.com/dataforcanada/process-field-imagery-labs/" _blank
-    click EnvironmentClimate "https://github.com/dataforcanada/process-environmental-climate-labs/" _blank
+    click EnvironmentClimate "https://github.com/dataforcanada/process-environmental-climate-health-labs/" _blank
     click Elevation "https://github.com/dataforcanada/process-elevation-labs/" _blank
     click WebCorpus "https://github.com/dataforcanada/process-web-corpus-labs/" _blank
 
@@ -232,4 +241,3 @@ Right now, we primarily need **feedback on our datasets and the underlying proce
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/license/mit).
-
