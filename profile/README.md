@@ -8,11 +8,14 @@ Check the current status of all our services here:
 
 ## Mission
 
-Data for Canada exists to bridge the gap between open data availability and data usability. We curate, clean, and re-engineer high-value Canadian datasets into high-performance, analysis-ready formats for data engineers, researchers/scientists, developers, and systems.
+Data for Canada exists to bridge the gap between open data availability, resiliency, and usability. We curate, clean, and re-engineer high-value Canadian datasets into high-performance, analysis-ready formats for data engineers, researchers/scientists, developers, and systems.
 
 ## The Problem
 
 Canada creates incredible amounts of open data, from foundational road networks to federal census statistics and orthoimagery. However, these datasets are often locked in legacy formats, fragmented portals, or structures that require significant engineering effort to normalize. For our target audience, the "time-to-insight" is often bottlenecked by data preparation.
+
+**Data Stability:**
+Beyond technical barriers, open data can be ephemeral. Links break, portals are reorganized, and priorities shift, causing valuable datasets to vanish from the public web. This instability makes it risky to build long-term research or software on top of data providers.
 
 ## The Solution
 
@@ -22,7 +25,7 @@ We act as the transformation layer. We aggregate datasets with permissive licens
 * **For Systems:** Standardized data structures designed to feed directly into pipelines, data warehouses, and downstream services.
 
 **Our Stewardship:**
-Data for Canada takes ownership of the datasets we create, from start to finish. We ensure that data remains consistent, allowing for reliable analysis across **time and space**.
+Data for Canada takes ownership of the datasets we create, from start to finish. We ensure that data remains consistent and available, acting as a stable foundation for your work. By decoupling access from the original source, we ensure your pipelines don't break even if the upstream location changes or expires.
 
 ## Target Software Ecosystem
 
@@ -38,7 +41,7 @@ Our data is optimized for:
 
 ## What Guides Us
 
-We prioritize our work in a utilitarian manner, aiming to provide the greatest amount of good to the greatest amount of individuals, though we remain open to making exceptions where necessary.
+We prioritize our work in a utilitarian manner, aiming to provide the greatest amount of good to the greatest amount of individuals. Our approach is guided by the principles of **digital preservation** and the need to keep public information accessible over the long term.
 
 Our approach is guided by the following:
 
@@ -62,6 +65,7 @@ See our processing pipeline in action. View samples and documentation for our cu
 
 ```mermaid
 flowchart TD
+    classDef linkNode stroke:#0000EE,color:#0000EE,stroke-width:2px;
     subgraph ds [Data Sources]
         Statistical@{ shape: lean-l}
         Foundation@{ shape: lean-l}
@@ -97,7 +101,7 @@ flowchart TD
 
     subgraph di [Distribution Infrastructure]
         ObjectStorage@{ shape: bow-rect, label: "Object Storage"}
-        Metadata@{ shape: rect}
+        Metadata@{ shape: rect, label: "FAIR Data Catalog"}
         HTTP@{ shape: rect, label: "Static Files"}
         DecentralizedDistribution@{ shape: rect, label: "Decentralized Distribution"}
     end
@@ -211,6 +215,7 @@ flowchart TD
     click JPEGXL "https://jpeg.org/jpegxl/" _blank
     click AV1 "https://aomedia.org/specifications/av1/" _blank
     click WARC "https://github.com/iipc/warc-specifications/" _blank
+    click HTTP "https://www.dataforcanada.org/docs/getting_started/" _blank
     click DecentralizedDistribution "https://www.dataforcanada.org/docs/dissemination/" _blank
     click Metadata "https://stac-utils.github.io/stac-geoparquet/latest/spec/stac-geoparquet-spec/" _blank
     click GeoSpatialServices "https://github.com/dataforcanada/geo-services-labs/" _blank
@@ -220,6 +225,11 @@ flowchart TD
     click BBOXServer "https://www.bbox.earth/" _blank
     click Panoramax "https://gitlab.com/panoramax" _blank
     click Pelias "https://pelias.io" _blank
+
+    %% APPLY STYLES TO LINKED NODES
+    class Foundation,Statistical,Orthoimagery,FieldImagery,EnvironmentClimate,Elevation,WebCorpus linkNode
+    class Parquet,FlatGeoBuf,GeoPackage,FileGeodatabase,MVT,MLT,COG,Zarr,WebP,PMTiles,JPEGXL,AV1,WARC linkNode
+    class DecentralizedDistribution,HTTP,Metadata,GeoSpatialServices linkNode
 ```
 
 ## Get Involved
@@ -228,9 +238,9 @@ We are actively looking for new members and partners to help shape this project.
 
 ### 🇨🇦 Infrastructure Support: Selective Mirroring
 
-To support data sovereignty and improve local access speeds, **we are currently seeking selective mirroring in Canada**.
+To support data sovereignty, safeguard against data loss, and improve local access speeds, **we are currently seeking selective mirroring in Canada**. See our [Infrastructure](/infrastructure) **(currently being updated)**.
 
-We are looking for academic institutions, research organizations, or ISPs interested in hosting mirrors of specific, high-value dataset subsets. If you have bandwidth and storage capacity to spare for the Canadian open data ecosystem, please [contact us](https://www.dataforcanada.org/contact/).
+We are looking for academic institutions, research organizations, or **infrastructure partners** interested in hosting mirrors of specific, high-value dataset subsets. If you have bandwidth and storage capacity to spare for the Canadian open data ecosystem, please [contact us](https://www.dataforcanada.org/contact/).
 
 ### Contributing & Feedback
 
