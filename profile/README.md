@@ -25,7 +25,7 @@ We act as the transformation layer. We aggregate datasets with permissive licens
 * **For Systems:** Standardized data structures designed to feed directly into pipelines, data warehouses, and downstream services.
 
 **Our Stewardship:**
-Data for Canada takes ownership of the datasets we create, from start to finish. We ensure that data remains consistent and available, acting as a stable foundation for your work. By decoupling access from the original source, we ensure your pipelines don't break even if the upstream location changes or expires.
+Data for Canada takes ownership of the datasets we create, from start to finish. We ensure that data remains consistent and available, acting as a stable foundation for your work, and allowing for reliable analysis across **time and space**. By decoupling access from the original source, we ensure your pipelines don't break even if the upstream location changes or expires.
 
 ## Target Software Ecosystem
 
@@ -238,7 +238,7 @@ We are actively looking for new members and partners to help shape this project.
 
 ### 🇨🇦 Infrastructure Support: Selective Mirroring
 
-To support data sovereignty, safeguard against data loss, and improve local access speeds, **we are currently seeking selective mirroring in Canada**. See our [Infrastructure](https://www.dataforcanada.org/infrastructure/).
+To support data sovereignty, safeguard against data loss, and improve local access speeds, **we are currently seeking selective mirroring in Canada**. See our [Infrastructure](/infrastructure).
 
 We are looking for academic institutions, research organizations, or **infrastructure partners** interested in hosting mirrors of specific, high-value dataset subsets. If you have bandwidth and storage capacity to spare for the Canadian open data ecosystem, please [contact us](https://www.dataforcanada.org/contact/).
 
