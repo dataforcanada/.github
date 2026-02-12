@@ -14,6 +14,18 @@ Data for Canada exists to bridge the gap between open data availability, resilie
 
 Canada creates incredible amounts of open data, from foundational road networks to federal census statistics and orthoimagery. However, these datasets are often locked in legacy formats, fragmented portals, or structures that require significant engineering effort to normalize. For our target audience, the "time-to-insight" is often bottlenecked by data preparation.
 
+## What Guides Us
+
+We prioritize our work in a utilitarian manner, aiming to provide the greatest amount of good to the greatest amount of individuals. Our approach is guided by the principles of **digital preservation** and the need to keep public information accessible over the long term.
+
+Our approach is guided by the following:
+
+* [Link rot in LIS literature: a 20-year study of web citation decay, recovery and preservation challenges](https://doi.org/10.1108/AJIM-05-2025-0286)
+* [Guidance on assessing readiness to manage data according to Findable, Accessible, Interoperable, Reusable (FAIR) principles](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/information-management/guidance-assessing-readiness-manage-data-according-findable-accessible-interoperable-reusable-principles.html)
+* [GC White Paper: Data Sovereignty and Public Cloud](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/digital-sovereignty/gc-white-paper-data-sovereignty-public-cloud.html)
+* [Sustainability of Digital Formats: Planning for Library of Congress Collections](https://www.loc.gov/preservation/digital/formats/index.html)
+* [Cloud-Optimized Geospatial Formats Guide](https://guide.cloudnativegeo.org/)
+
 **Data Stability:**
 Beyond technical barriers, open data can be ephemeral. Links break, portals are reorganized, and priorities shift, causing valuable datasets to vanish from the public web. This instability makes it risky to build long-term research or software on top of data providers.
 
@@ -33,23 +45,14 @@ We adopt an **open-source first** approach, while supporting proprietary solutio
 
 Our data is optimized for:
 
-* **Core Libraries & Tools:** [GDAL/OGR](https://gdal.org/), [QGIS](https://qgis.org/), and [QField](https://qfield.org/).
-* **Analysis & Database:** [DuckDB](https://duckdb.org/), [SedonaDB](https://sedona.apache.org/sedonadb/latest/).
-* **Serving:** [GeoServer](https://geoserver.org/), [Martin](https://martin.maplibre.org/), and [ZOO-Project](https://zoo-project.org/).
-* **Serverless:** [Cloudflare Workers](https://workers.cloudflare.com/), [AWS Lambda](https://aws.amazon.com/lambda/), and [Google Cloud Run functions](https://cloud.google.com/functions).
-* **Enterprise:** Esri based products ([ArcGIS Pro](https://www.esri.com/en-us/arcgis/products/arcgis-pro/overview), [ArcGIS Server](https://enterprise.arcgis.com/)).
-
-## What Guides Us
-
-We prioritize our work in a utilitarian manner, aiming to provide the greatest amount of good to the greatest amount of individuals. Our approach is guided by the principles of **digital preservation** and the need to keep public information accessible over the long term.
-
-Our approach is guided by the following:
-
-* [Link rot in LIS literature: a 20-year study of web citation decay, recovery and preservation challenges](https://doi.org/10.1108/AJIM-05-2025-0286)
-* [Guidance on assessing readiness to manage data according to Findable, Accessible, Interoperable, Reusable (FAIR) principles](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/information-management/guidance-assessing-readiness-manage-data-according-findable-accessible-interoperable-reusable-principles.html)
-* [GC White Paper: Data Sovereignty and Public Cloud](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/digital-sovereignty/gc-white-paper-data-sovereignty-public-cloud.html)
-* [Sustainability of Digital Formats: Planning for Library of Congress Collections](https://www.loc.gov/preservation/digital/formats/index.html)
-* [Cloud-Optimized Geospatial Formats Guide](https://guide.cloudnativegeo.org/)
+| Category | Recommended Stack & Libraries |
+| :--- | :--- |
+| **Core & Desktop** | [GDAL/OGR](https://gdal.org/), [QGIS](https://qgis.org/), [QField](https://qfield.org/) |
+| **Python & Data** | [GeoPandas](https://geopandas.org/), [Lonboard](https://developmentseed.org/lonboard/latest/), [DuckDB](https://duckdb.org/), [SedonaDB](https://sedona.apache.org/sedonadb/latest/)|
+| **Database** | [PostgreSQL](https://www.postgresql.org/) with [PostGIS](https://postgis.net/) and [pg_mooncake](https://www.mooncake.dev/pgmooncake/) extensions |
+| **Serving** | [GeoServer](https://geoserver.org/), [Martin](https://martin.maplibre.org/), [ZOO-Project](https://zoo-project.org/) |
+| **Serverless** | [Cloudflare Workers](https://workers.cloudflare.com/), [AWS Lambda](https://aws.amazon.com/lambda/), [Google Cloud Run functions](https://cloud.google.com/functions) |
+| **Enterprise** | [ArcGIS Pro](https://www.esri.com/en-us/arcgis/products/arcgis-pro/overview), [ArcGIS Enterprise](https://enterprise.arcgis.com/) |
 
 ## Explore Sample Datasets
 
@@ -66,134 +69,222 @@ See our processing pipeline in action. View samples and documentation for our cu
 ```mermaid
 flowchart TD
     classDef linkNode stroke:#0000EE,color:#0000EE,stroke-width:2px;
+    
+    %% ---------------------------------------------------------
+    %% 1. DATA SOURCES
+    %% ---------------------------------------------------------
     subgraph ds [Data Sources]
         Statistical@{ shape: lean-l}
         Foundation@{ shape: lean-l}
         Orthoimagery@{ shape: lean-l}
-        FieldImagery@{ shape: lean-l, label: "Field Imagery"}
         EnvironmentClimate@{ shape: lean-l, label: "Environment, Climate, & Health"}
+        FieldImagery@{ shape: lean-l, label: "Field Imagery"}
         Elevation@{ shape: lean-l}
         WebCorpus@{ shape: lean-l, label: "Web Corpus"}
     end
 
+    %% ---------------------------------------------------------
+    %% 3. PROCESSING PIPELINE
+    %% ---------------------------------------------------------
     subgraph pp [Processing Pipeline]
+        %% Not the orchestrator, but a key towards achieving project mission.
+        DataforCanadaPackagesCollection@{ shape: rect, label: "Data for Canada Packages Collection"}
         Raw@{ shape: rect, label: "Raw Data Ingestion"}
-        Transform@{ shape: rect, label: "Transform and Optimize"}
+        %% Internal Link
+        Raw --> DataforCanadaPackagesCollection
     end
 
+    %% ---------------------------------------------------------
+    %% 4. DISSEMINATION FORMATS
+    %% ---------------------------------------------------------
     subgraph df [Dissemination Formats]
-        Parquet@{ shape: lean-l}
+        
+        %% Box: Long-Term Storage (Pastel Gold)
+        subgraph sot [Long-Term Storage]
+            Parquet@{ shape: lean-l}
+            Zarr@{ shape: lean-l}
+            GeoTIFF@{ shape: lean-l}
+            AV1@{ shape: lean-l, label: "Next-Gen Video"}
+            JPEGXL@{ shape: lean-l, label: "Next-Gen Imagery"}
+            WARC@{ shape: lean-l, label: "Unstructured Web Data"}
+            FAIRDataDis@{ shape: lean-l, label: "FAIR Data Catalogue"}
+        end
+
+        %% Intermediate format (Standalone)
         FlatGeoBuf@{ shape: lean-l}
-        MVT@{ shape: lean-l}
-        MLT@{ shape: lean-l}
-        PMTiles@{ shape: lean-l}
-        GeoPackage@{ shape: lean-l}
-        FileGeodatabase@{shape: lean-l, label: "File Geodatabase"}
-        COG@{ shape: lean-l}
-        Zarr@{ shape: lean-l}
-        WebP@{ shape: lean-l}
-        JPG@{ shape: lean-l}
-        PNG@{ shape: lean-l}
-        JPEGXL@{ shape: lean-l, label: "JPEG XL"}
-        AV1@{ shape: lean-l, label: "AV1"}
-        WARC@{ shape: lean-l}
+
+        %% Box: Vector Tiles (Pastel Orange)
+        subgraph vt [Vector Tiles]
+            VectorTiles@{ shape: lean-l, label: "Mapbox Vector Tiles"}
+            NextGenVectorTiles@{ shape: lean-l, label: "Next-Gen Vector Tiles"}
+        end
+
+        %% Box: Visuals (Pastel Blue - No Name)
+        subgraph visuals [" "]
+            WebP@{ shape: lean-l}
+            JPG@{ shape: lean-l}
+            PNG@{ shape: lean-l}
+        end
+
+        %% Box: Portable Databases (Pastel Green)
+        subgraph pkg [Portable Databases]
+            PMTiles@{ shape: lean-l}
+            SQLite@{ shape: lean-l}
+        end
+
+        %% Box: Enterprise (Pastel Purple)
+        subgraph ent [Enterprise]
+            FileGeodatabase@{shape: lean-l, label: "File Geodatabase"}
+        end
     end
 
+    %% ---------------------------------------------------------
+    %% 5. DISTRIBUTION INFRASTRUCTURE
+    %% ---------------------------------------------------------
     subgraph di [Distribution Infrastructure]
         ObjectStorage@{ shape: bow-rect, label: "Object Storage"}
-        Metadata@{ shape: rect, label: "FAIR Data Catalog"}
+        Metadata@{ shape: rect, label: "FAIR Data Catalogue"}
         HTTP@{ shape: rect, label: "Static Files"}
         DecentralizedDistribution@{ shape: rect, label: "Decentralized Distribution"}
     end
 
+    %% ---------------------------------------------------------
+    %% 6. EXPERIMENTAL INFRASTRUCTURE
+    %% ---------------------------------------------------------
     subgraph ei [Experimental Infrastructure]
         GeoSpatialServices@{ shape: rect, label: "Geospatial Services"}
-        %%Martin@{ shape: rect}
-        %%GeoServer@{ shape: rect}
-        %%ZOOProject@{ shape: rect, label: "ZOO-Project"}
-        %%BBOXServer@{ shape: rect, label: "BBOX Server"}
-        %%Panoramax@{ shape: rect}
-        %%Pelias@{ shape: rect}
     end
 
+    %% ---------------------------------------------------------
+    %% 7. CONSUMPTION
+    %% ---------------------------------------------------------
     subgraph "Consumption"
         DataSci@{ shape: rect, label: "Data People & Developers"}
         Systems@{ shape: rect, label: "Systems"}
     end
 
-    %% Relationships
-    Statistical a1@--> Raw
+    %% =========================================================
+    %% RELATIONSHIPS
+    %% =========================================================
+
+    %% Data Sources <--> Data for Canada Packages Collection (Box)
+    Statistical a1@<--> pp
     a1@{animate: true, animation: slow}
-    Foundation a2@--> Raw
+    Foundation a2@<--> pp
     a2@{animate: true, animation: slow}
-    Orthoimagery a3@--> Raw
+    Orthoimagery a3@<--> pp
     a3@{animate: true, animation: slow}
-    FieldImagery a4@--> Raw
-    a4@{animate:true, animation: fast}
-    EnvironmentClimate a5@--> Raw
+    EnvironmentClimate a5@<--> pp
     a5@{animate: true, animation: fast}
-    Elevation a6@--> Raw
+    FieldImagery a4@<--> pp
+    a4@{animate:true, animation: fast}
+    Elevation a6@<--> pp
     a6@{animate: true, animation: slow}
-    WebCorpus a7@--> Raw
+    WebCorpus a7@<--> pp
     a7@{animate: true, animation: fast}
-    Raw a8@--> Transform
-    a8@{animate: true, animation: slow}
-    Transform a9@--> df
-    a9@{animate: true, animation: slow}
-    Parquet a10@--> FlatGeoBuf
+
+    pp a10@--> df
     a10@{animate: true, animation: fast}
-    Parquet a100@--> FileGeodatabase
-    a100@{animate: true, animation: slow}
-    FlatGeoBuf a11@--> MVT
+
+    %% Long-Term Storage --> FlatGeoBuf
+    sot a10@<--> FlatGeoBuf
+    a10@{animate: true, animation: fast}
+    
+    %% FlatGeoBuf --> Vector Tiles (Box)
+    FlatGeoBuf a11@--> vt
     a11@{animate: true, animation: fast}
-    FlatGeoBuf a91@--> MLT
-    a91@{animate: true, animation: fast}
-    MVT a90@ --> PMTiles
-    a90@{animate: true, animation: fast}
-    MVT a96@ --> GeoPackage
-    a96@{animate: true, animation: slow}
-    MLT a92@ --> PMTiles
-    a92@{animate: true, animation: slow}
-    MLT a95@ --> GeoPackage
-    a95@{animate: true, animation: slow}
-    Zarr a12@ --> WebP
+
+    %% Long-Term Storage <--> Visuals (Box)
+    sot a12@<--> visuals
     a12@{animate: true, animation: slow}
-    df a13@ --> di
-    a13@{animate: true, animation: slow}
-    COG a14@--> WebP
-    a14@{animate: true, animation: slow}
-    WebP a93@--> PMTiles 
+
+    %% Vector Tiles --> Portable Databases (Box)
+    vt a90@<--> pkg
+    a90@{animate: true, animation: fast}
+
+    %% Visuals --> Portable Databases (Box)
+    visuals a93@<--> pkg
     a93@{animate: true, animation: slow}
-    WebP a94@--> GeoPackage
-    a94@{animate: true, animation: slow}
-    WebP a103@--> JPG
-    a103@{animate: true, animation: slow}
-    WebP a104@--> PNG
-    a104@{animate: true, animation: slow}
-	JPG a101@--> FileGeodatabase
-    a101@{animate: true, animation: slow}
-	PNG a102@--> FileGeodatabase
+
+    %% Long-Term Storage --> Enterprise (Box)
+    sot a100@<--> ent
+    a100@{animate: true, animation: slow}
+
+    %% Visuals --> Enterprise (Box)
+    visuals a102@--> ent
     a102@{animate: true, animation: slow}
+
+    %% Dissemination Formats --> Distribution Infrastructure
+    df a13@--> di
+    a13@{animate: true, animation: slow}
+
+    %% Distribution Infrastructure Flow
     ObjectStorage a15@--> Metadata
     a15@{animate: true, animation: slow}
     Metadata a16@--> HTTP
     a16@{animate: true, animation: slow}
+    
     HTTP a17@--> ei
     a17@{animate: true, animation: slow}
     HTTP a18@--> DecentralizedDistribution
     a18@{animate: true, animation: slow}
     HTTP a19@--> DataSci
     a19@{animate: true, animation: slow}
+    
     DecentralizedDistribution a20@--> Systems
     a20@{animate: true, animation: fast}
     DecentralizedDistribution a21@--> DataSci
     a21@{animate: true, animation: fast}
+    
     Systems a22@ --> DataSci
     a22@{animate: true, animation: fast}
     ei a23@ --> DataSci
     a23@{animate: true, animation: slow}
 
-    %% URLs
+    %% =========================================================
+    %% STYLING
+    %% =========================================================
+
+classDef linkNode stroke:#333333,color:#333333,stroke-width:1.5px;
+
+style pp fill:#D32F2F,stroke:#8E0000,color:#FFFFFF
+style DataforCanadaPackagesCollection fill:#B71C1C,stroke:#7F0000,color:#FFFFFF
+style FAIRDataDis fill:#B71C1C,stroke:#7F0000,color:#FFFFFF
+style Metadata fill:#B71C1C,stroke:#7F0000,color:#FFFFFF
+style Raw fill:#E57373,stroke:#C62828,color:#000000
+
+style df fill:#D32F2F,stroke:#8E0000,color:#FFFFFF
+style sot fill:#EF9A9A,stroke:#C62828,color:#000000
+
+style Parquet fill:#FFCDD2,stroke:#E57373,color:#000000
+style Zarr fill:#FFCDD2,stroke:#E57373,color:#000000
+style GeoTIFF fill:#FFCDD2,stroke:#E57373,color:#000000
+style JPEGXL fill:#FFCDD2,stroke:#E57373,color:#000000
+style WARC fill:#FFCDD2,stroke:#E57373,color:#000000
+style AV1 fill:#FFCDD2,stroke:#E57373,color:#000000
+
+style ds fill:#FB8C00,stroke:#E65100,color:#000000
+
+style pkg fill:#FFB74D,stroke:#EF6C00,color:#000000
+style SQLite fill:#EF6C00,stroke:#E65100,color:#000000
+style PMTiles fill:#FFCC80,stroke:#FB8C00,color:#000000
+
+style vt fill:#FBC02D,stroke:#F9A825,color:#000000
+style FlatGeoBuf fill:#FBC02D,stroke:#F9A825,color:#000000
+
+style visuals fill:#FBC02D,stroke:#F9A825,color:#000000
+
+style ent fill:#66BB6A,stroke:#2E7D32,color:#000000
+
+class Foundation,Statistical,Orthoimagery,FieldImagery,EnvironmentClimate,Elevation,WebCorpus linkNode
+class Parquet,FlatGeoBuf,SQLite,FileGeodatabase,VectorTiles,NextGenVectorTiles,GeoTIFF,Zarr,WebP,PMTiles,JPEGXL,AV1,WARC linkNode
+class DecentralizedDistribution,HTTP,GeoSpatialServices linkNode
+
+    %% =========================================================
+    %% CLICK ACTIONS
+    %% =========================================================
+    click DataforCanadaPackagesCollection "https://github.com/dataforcanada/dataforcanadapkgs-labs/" _blank
+
     click Foundation "https://github.com/dataforcanada/process-foundation-labs/" _blank
     click Statistical "https://github.com/dataforcanada/process-statistical-labs/" _blank
     click Orthoimagery "https://github.com/dataforcanada/process-orthoimagery-labs/" _blank
@@ -204,32 +295,23 @@ flowchart TD
 
     click Parquet "https://github.com/apache/parquet-format/" _blank
     click FlatGeoBuf "https://flatgeobuf.org/" _blank
-    click GeoPackage "https://www.geopackage.org/" _blank
+    click SQLite "https://www.geopackage.org/" _blank
     click FileGeodatabase "https://gdal.org/en/stable/drivers/vector/openfilegdb.html" _blank
-    click MVT "https://github.com/mapbox/vector-tile-spec/" _blank
-    click MLT "https://github.com/maplibre/maplibre-tile-spec/" _blank
-    click COG "https://cogeo.org/" _blank
+    click VectorTiles "https://github.com/mapbox/vector-tile-spec/" _blank
+    click NextGenVectorTiles "https://github.com/maplibre/maplibre-tile-spec/" _blank
+    click GeoTIFF "https://cogeo.org/" _blank
     click Zarr "https://github.com/zarr-developers/geozarr-spec/" _blank
     click WebP "https://developers.google.com/speed/webp/" _blank
     click PMTiles "https://github.com/protomaps/PMTiles/blob/main/spec/v3/spec.md" _blank
     click JPEGXL "https://jpeg.org/jpegxl/" _blank
     click AV1 "https://aomedia.org/specifications/av1/" _blank
     click WARC "https://github.com/iipc/warc-specifications/" _blank
+    click FAIRDataDis "https://stac-utils.github.io/stac-geoparquet/latest/spec/stac-geoparquet-spec/" _blank
+
     click HTTP "https://www.dataforcanada.org/docs/getting_started/" _blank
     click DecentralizedDistribution "https://www.dataforcanada.org/docs/dissemination/" _blank
     click Metadata "https://stac-utils.github.io/stac-geoparquet/latest/spec/stac-geoparquet-spec/" _blank
     click GeoSpatialServices "https://github.com/dataforcanada/geo-services-labs/" _blank
-    click Martin "https://martin.maplibre.org/" _blank
-    click GeoServer "https://geoserver.org/" _blank
-    click ZOOProject "https://zoo-project.org/" _blank
-    click BBOXServer "https://www.bbox.earth/" _blank
-    click Panoramax "https://gitlab.com/panoramax" _blank
-    click Pelias "https://pelias.io" _blank
-
-    %% APPLY STYLES TO LINKED NODES
-    class Foundation,Statistical,Orthoimagery,FieldImagery,EnvironmentClimate,Elevation,WebCorpus linkNode
-    class Parquet,FlatGeoBuf,GeoPackage,FileGeodatabase,MVT,MLT,COG,Zarr,WebP,PMTiles,JPEGXL,AV1,WARC linkNode
-    class DecentralizedDistribution,HTTP,Metadata,GeoSpatialServices linkNode
 ```
 
 ## Get Involved
@@ -244,7 +326,13 @@ We are looking for academic institutions, research organizations, or **infrastru
 
 ### Contributing & Feedback
 
-Right now, we primarily need **feedback on our datasets and the underlying processes** used to generate them. If you have thoughts on data quality, format optimization, or pipeline improvements, we want to hear from you.
+Right now, we primarily need **feedback on file naming convention, our datasets and their underlying processes, and the infrastructure** used to generate them. If you have thoughts on data quality, format optimization, or pipeline improvements, we want to hear from you.
+
+* **Discussions:** Head over to [#dataforcanada:matrix.org](https://matrix.to/#/#dataforcanada:matrix.org) to chat, or go to the individual process GitHub repos to comment on specific issues.
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/license/mit).
 
 * **Discussions:** Head over to [#dataforcanada:matrix.org](https://matrix.to/#/#dataforcanada:matrix.org) to chat, or go to the individual process GitHub repos to comment on specific issues.
 
