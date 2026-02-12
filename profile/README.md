@@ -335,7 +335,3 @@ Right now, we primarily need **feedback on file naming convention, our datasets 
 This project is licensed under the [MIT License](https://opensource.org/license/mit).
 
 * **Discussions:** Head over to [#dataforcanada:matrix.org](https://matrix.to/#/#dataforcanada:matrix.org) to chat, or go to the individual process GitHub repos to comment on specific issues.
-
-## License
-
-This project is licensed under the [MIT License](https://opensource.org/license/mit).
