@@ -14,6 +14,9 @@ Data for Canada exists to bridge the gap between open data availability, resilie
 
 Canada creates incredible amounts of open data, from foundational road networks to federal census statistics and orthoimagery. However, these datasets are often locked in legacy formats, fragmented portals, or structures that require significant engineering effort to normalize. For our target audience, the "time-to-insight" is often bottlenecked by data preparation.
 
+**Data Stability:**
+Beyond technical barriers, open data can be ephemeral. Links break, portals are reorganized, and priorities shift, causing valuable datasets to vanish from the public web. This instability makes it risky to build long-term research or software on top of data providers.
+
 ## What Guides Us
 
 We prioritize our work in a utilitarian manner, aiming to provide the greatest amount of good to the greatest amount of individuals. Our approach is guided by the principles of **digital preservation** and the need to keep public information accessible over the long term.
@@ -25,9 +28,6 @@ Our approach is guided by the following:
 * [GC White Paper: Data Sovereignty and Public Cloud](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/digital-sovereignty/gc-white-paper-data-sovereignty-public-cloud.html)
 * [Sustainability of Digital Formats: Planning for Library of Congress Collections](https://www.loc.gov/preservation/digital/formats/index.html)
 * [Cloud-Optimized Geospatial Formats Guide](https://guide.cloudnativegeo.org/)
-
-**Data Stability:**
-Beyond technical barriers, open data can be ephemeral. Links break, portals are reorganized, and priorities shift, causing valuable datasets to vanish from the public web. This instability makes it risky to build long-term research or software on top of data providers.
 
 ## The Solution
 
@@ -91,7 +91,8 @@ flowchart TD
         DataforCanadaPackagesCollection@{ shape: rect, label: "Data for Canada Packages Collection"}
         Raw@{ shape: rect, label: "Raw Data Ingestion"}
         %% Internal Link
-        Raw --> DataforCanadaPackagesCollection
+        Raw a1000@ <--> DataforCanadaPackagesCollection
+        a1000@{animate: true, animation: slow}
     end
 
     %% ---------------------------------------------------------
@@ -144,7 +145,7 @@ flowchart TD
     subgraph di [Distribution Infrastructure]
         ObjectStorage@{ shape: bow-rect, label: "Object Storage"}
         Metadata@{ shape: rect, label: "FAIR Data Catalogue"}
-        HTTP@{ shape: rect, label: "Static Files"}
+        HTTP@{ shape: rect, label: "Systems-Ready Data"}
         DecentralizedDistribution@{ shape: rect, label: "Decentralized Distribution"}
     end
 
@@ -215,20 +216,20 @@ flowchart TD
     a102@{animate: true, animation: slow}
 
     %% Dissemination Formats --> Distribution Infrastructure
-    df a13@--> di
+    df a13@<--> di
     a13@{animate: true, animation: slow}
 
     %% Distribution Infrastructure Flow
-    ObjectStorage a15@--> Metadata
+    ObjectStorage a15@<--> Metadata
     a15@{animate: true, animation: slow}
-    Metadata a16@--> HTTP
+    Metadata a16@<--> HTTP
     a16@{animate: true, animation: slow}
     
-    HTTP a17@--> ei
+    HTTP a17@<--> ei
     a17@{animate: true, animation: slow}
-    HTTP a18@--> DecentralizedDistribution
+    HTTP a18@<--> DecentralizedDistribution
     a18@{animate: true, animation: slow}
-    HTTP a19@--> DataSci
+    HTTP a19@<--> DataSci
     a19@{animate: true, animation: slow}
     
     DecentralizedDistribution a20@--> Systems
@@ -236,9 +237,9 @@ flowchart TD
     DecentralizedDistribution a21@--> DataSci
     a21@{animate: true, animation: fast}
     
-    Systems a22@ --> DataSci
+    Systems a22@ <--> DataSci
     a22@{animate: true, animation: fast}
-    ei a23@ --> DataSci
+    ei a23@ <--> DataSci
     a23@{animate: true, animation: slow}
 
     %% =========================================================
@@ -250,6 +251,9 @@ classDef linkNode stroke:#333333,color:#333333,stroke-width:1.5px;
 style pp fill:#D32F2F,stroke:#8E0000,color:#FFFFFF
 style DataforCanadaPackagesCollection fill:#B71C1C,stroke:#7F0000,color:#FFFFFF
 style FAIRDataDis fill:#B71C1C,stroke:#7F0000,color:#FFFFFF
+style DecentralizedDistribution fill:#B71C1C,stroke:#7F0000,color:#FFFFFF
+style HTTP fill:#B71C1C,stroke:#7F0000,color:#FFFFFF
+style Systems fill:#B71C1C,stroke:#7F0000,color:#FFFFFF
 style Metadata fill:#B71C1C,stroke:#7F0000,color:#FFFFFF
 style Raw fill:#E57373,stroke:#C62828,color:#000000
 
@@ -275,10 +279,11 @@ style FlatGeoBuf fill:#FBC02D,stroke:#F9A825,color:#000000
 style visuals fill:#FBC02D,stroke:#F9A825,color:#000000
 
 style ent fill:#66BB6A,stroke:#2E7D32,color:#000000
+style DataSci fill:#FFB74D,stroke:#EF6C00,color:#000000
+
 
 class Foundation,Statistical,Orthoimagery,FieldImagery,EnvironmentClimate,Elevation,WebCorpus linkNode
 class Parquet,FlatGeoBuf,SQLite,FileGeodatabase,VectorTiles,NextGenVectorTiles,GeoTIFF,Zarr,WebP,PMTiles,JPEGXL,AV1,WARC linkNode
-class DecentralizedDistribution,HTTP,GeoSpatialServices linkNode
 
     %% =========================================================
     %% CLICK ACTIONS
@@ -308,7 +313,7 @@ class DecentralizedDistribution,HTTP,GeoSpatialServices linkNode
     click WARC "https://github.com/iipc/warc-specifications/" _blank
     click FAIRDataDis "https://stac-utils.github.io/stac-geoparquet/latest/spec/stac-geoparquet-spec/" _blank
 
-    click HTTP "https://www.dataforcanada.org/docs/getting_started/" _blank
+    click HTTP "https://www.dataforcanada.org/docs/" _blank
     click DecentralizedDistribution "https://www.dataforcanada.org/docs/dissemination/" _blank
     click Metadata "https://stac-utils.github.io/stac-geoparquet/latest/spec/stac-geoparquet-spec/" _blank
     click GeoSpatialServices "https://github.com/dataforcanada/geo-services-labs/" _blank
@@ -333,5 +338,3 @@ Right now, we primarily need **feedback on file naming convention, our datasets 
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/license/mit).
-
-* **Discussions:** Head over to [#dataforcanada:matrix.org](https://matrix.to/#/#dataforcanada:matrix.org) to chat, or go to the individual process GitHub repos to comment on specific issues.
