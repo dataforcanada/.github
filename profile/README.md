@@ -58,13 +58,13 @@ Our data is optimized for:
 
 See our processing pipeline in action. View samples and documentation for our current priority processes:
 
-* [**Statistical Products**](https://www.dataforcanada.org/docs/processes/statistical_products/): Census data and other quantitative datasets.
-* [**Foundation**](https://www.dataforcanada.org/docs/processes/foundation/#download-and-preview/): Core geospatial layers including address point, road networks, and buildings.
-* [**Orthoimagery**](https://www.dataforcanada.org/docs/processes/orthoimagery/#download-and-preview): High-resolution orthoimagery.
+* [**Statistical Products**](https://www.dataforcanada.org/docs/d4c-pkgs/d4c-datapkg-statistical/): Census data and other quantitative datasets.
+* [**Foundation**](https://www.dataforcanada.org/docs/d4c-pkgs/d4c-datapkg-foundation/#download-and-preview/): Core geospatial layers including address point, road networks, and buildings.
+* [**Orthoimagery**](https://www.dataforcanada.org/docs/d4c-pkgs/d4c-datapkg-orthoimagery/#download-and-preview): High-resolution orthoimagery.
 
 ## High-Level Overview
 
-**Note:** The data sources in the diagram below are **prioritized from left to right**, reflecting our current focus on processing high-value [statistical](https://www.dataforcanada.org/docs/processes/statistical_products/), [foundational](https://www.dataforcanada.org/docs/processes/foundation/#download-and-preview), and [orthoimagery](https://www.dataforcanada.org/docs/processes/orthoimagery/#download-and-preview) datasets first.
+**Note:** The data sources in the diagram below are **prioritized from left to right**, reflecting our current focus on processing high-value [statistical](https://www.dataforcanada.org/docs/d4c-pkgs/d4c-datapkg-statistical/), [foundational](https://www.dataforcanada.org/docs/d4c-pkgs/d4c-datapkg-orthoimagery/#download-and-preview), and [orthoimagery](https://www.dataforcanada.org/docs/d4c-pkgs/d4c-datapkg-orthoimagery/#download-and-preview) datasets first.
 
 ![High Level Overview](https://www.dataforcanada.org/high-level-overview-homepage.svg)
 
@@ -74,15 +74,19 @@ We are actively looking for new members and partners to help shape this project.
 
 ### 🇨🇦 Infrastructure Support: Selective Mirroring
 
-To support data sovereignty, safeguard against data loss, and improve local access speeds, **we are currently seeking selective mirroring in Canada**. See our [Infrastructure](/infrastructure).
+To support data sovereignty, safeguard against data loss, and improve local access speeds, **we are currently seeking selective mirroring in Canada**.
 
 We are looking for academic institutions, research organizations, or **infrastructure partners** interested in hosting mirrors of specific, high-value dataset subsets. If you have bandwidth and storage capacity to spare for the Canadian open data ecosystem, please [contact us](https://www.dataforcanada.org/contact/).
 
 ### Contributing & Feedback
 
-Right now, we primarily need **feedback on file naming convention, our datasets and their underlying processes, and the infrastructure** used to generate them. If you have thoughts on data quality, format optimization, or pipeline improvements, we want to hear from you.
+Right now, we primarily need **feedback on file naming convention, our [data packages](https://www.dataforcanada.org/docs/d4c-pkgs/), and the infrastructure** used to generate them. If you have thoughts on data quality, format optimization, or pipeline improvements, we want to hear from you.
 
 * **Discussions:** Head over to [#dataforcanada:matrix.org](https://matrix.to/#/#dataforcanada:matrix.org) to chat, or go to the individual process GitHub repos to comment on specific issues.
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/license/mit).
 
 ## License
 
