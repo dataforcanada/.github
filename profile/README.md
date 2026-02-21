@@ -66,7 +66,7 @@ See our processing pipeline in action. View samples and documentation for our cu
 
 **Note:** The data sources in the diagram below are **prioritized from left to right**, reflecting our current focus on processing high-value [statistical](https://www.dataforcanada.org/docs/processes/statistical_products/), [foundational](https://www.dataforcanada.org/docs/processes/foundation/#download-and-preview), and [orthoimagery](https://www.dataforcanada.org/docs/processes/orthoimagery/#download-and-preview) datasets first.
 
-![High Level Overview](https://www.dataforcanada.org/high-level-overview-homepage.svg)
+![High Level Overview]()
 
 ## Get Involved
 
