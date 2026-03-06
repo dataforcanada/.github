@@ -29,12 +29,12 @@ Our approach is guided by the following:
 * [Science Needs a Social Network for Sharing Big Data](https://hackmd.io/wKKm4cIDR6a9kYwZ3srVFg?view)
 * [Cloud-Optimized Geospatial Formats Guide](https://guide.cloudnativegeo.org/)
 * [GC White Paper: Data Sovereignty and Public Cloud](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/digital-sovereignty/gc-white-paper-data-sovereignty-public-cloud.html)
-  
+
 ## The Solution
 
 We act as the transformation layer. We aggregate datasets with permissive licenses and process them into "digestible" standards optimized for modern downstream applications.
 
-* **For Data Engineers, Researchers/Scientists, and Developers:** Skip the cleaning phase. Access normalized, documented data ready for analysis.
+* **For Data Engineers, Researchers/Scientists, and Developers (AKA Data People):** Skip the cleaning phase. Access normalized, documented data ready for analysis.
 * **For Systems:** Standardized data structures designed to feed directly into pipelines, data warehouses, and downstream services.
 
 **Our Stewardship:**
@@ -51,13 +51,13 @@ Our data is optimized for:
 | **Core & Desktop** | [GDAL/OGR](https://gdal.org/), [QGIS](https://qgis.org/), [QField](https://qfield.org/) |
 | **Python & Data** | [GeoPandas](https://geopandas.org/), [Lonboard](https://developmentseed.org/lonboard/latest/), [DuckDB](https://duckdb.org/), [SedonaDB](https://sedona.apache.org/sedonadb/latest/)|
 | **Database** | [PostgreSQL](https://www.postgresql.org/) with [PostGIS](https://postgis.net/) and [pg_mooncake](https://www.mooncake.dev/pgmooncake/) extensions |
-| **Serving** | [GeoServer](https://geoserver.org/), [Martin](https://martin.maplibre.org/), [ZOO-Project](https://zoo-project.org/) |
+| **Serving** | [GeoServer](https://geoserver.org/), [Martin](https://martin.maplibre.org/), [TiTiler](https://developmentseed.org/titiler/), [ZOO-Project](https://zoo-project.org/), [DGGS](https://ogcapi.ogc.org/dggs/) |
 | **Serverless** | [Cloudflare Workers](https://workers.cloudflare.com/), [AWS Lambda](https://aws.amazon.com/lambda/), [Google Cloud Run functions](https://cloud.google.com/functions) |
 | **Enterprise** | [ArcGIS Pro](https://www.esri.com/en-us/arcgis/products/arcgis-pro/overview), [ArcGIS Enterprise](https://enterprise.arcgis.com/) |
 
 ## Explore Sample Datasets
 
-See our processing pipeline in action. View samples and documentation for our current priority processes:
+See our processing pipeline in action. View samples and documentation for our current priority data packages (AKA `d4c-pkgs`):
 
 * [**Statistical Products**](https://www.dataforcanada.org/docs/d4c-pkgs/d4c-datapkg-statistical/): Census data and other quantitative datasets.
 * [**Foundation**](https://www.dataforcanada.org/docs/d4c-pkgs/d4c-datapkg-foundation/#download-and-preview/): Core geospatial layers including address point, road networks, and buildings.
@@ -93,3 +93,4 @@ Join the conversation at [#dataforcanada:matrix.org](https://matrix.to/#/#datafo
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/license/mit).
+
